@@ -1,5 +1,5 @@
 {
-  "name": "new-project",
+  "name": "typing-teacher",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,19 +11,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cass1618/new-project.git"
+    "url": "git+https://github.com/cass1618/typing-teacher.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/cass1618/new-project/issues"
+    "url": "https://github.com/cass1618/typing-teacher/issues"
   },
-  "homepage": "https://github.com/cass1618/new-project#readme",
+  "homepage": "https://github.com/cass1618/typing-teacher#readme",
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.6.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.2.0",
+    "dotenv-webpack": "^2.0.0",
     "eslint": "^6.3.0",
     "eslint-loader": "^3.0.0",
     "html-webpack-plugin": "^3.2.0",
