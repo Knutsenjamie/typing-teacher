@@ -3,36 +3,27 @@ export default class Game {
     this.numberCorrect = 0;
     this.keystrokeCounter = 0;
     this.waitingForBackspace = false;
+    this.textArray = String("console.log(x)").split('');
+    this.gameOver = false;
   }
-  evalChar(keystrokeChar, arrayChar) {
-    // if(this.waitingForBackspace === true) {
-    //   if(keystrokeChar === temp)  { //temp === backspace
-    //     this.waitingForBackspace = false;
-    //     //collectUserInput(); //frontend function
-    //   } else {
-    //     // recommend error message
-    //     //collectUserInput();
-    //   }
-    // } else if (keystrokeChar === arrayChar) {
-    //   this.numberCorrect ++
-    //   //collectUserInput();
-    // } else {
-    //   this.waitingForBackspace = true;
-    //   //collectUserInput();
-    // }
+  evalChar(keystrokeChar) {
+    this.keystrokeCounter++;
+    if(this.waitingForBackspace === true) {
+      if(keystrokeChar === 'backspace')  { //temp === backspace
+        this.waitingForBackspace = false;
+        } else {
+        // recommend error message
+      }
+    } else if (keystrokeChar === this.textArray[this.numberCorrect]) {
+      this.numberCorrect ++
+      if(this.numberCorrect === this.textArray.length){
+        this.gameOver = true;
+      }
+    } else {
+      this.waitingForBackspace = true;
+    }
+  }
+  getAccuracy(){
+    return this.numberCorrect/this.keystrokeCounter;
   }
 }
-
-// collectUserInput()
-  
-
-// <input type="text" onkeydown="myFunction()"> 
-
-// <onchange=function()>
-
-// $("input").on('keystroke',function)
-
-// keyStrokeChar = $("#inputField").val('').charAt(length);
-
-
-// `KeyboardEvent: key='${event.key}' | code='${event.code}'`
