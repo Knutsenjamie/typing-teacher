@@ -1,0 +1,53 @@
+PROJECT OUTLINE
+
+USER INTERFACE
+  Display full text above
+  Field for user to type
+  Detect user keystrokes
+  Change styling of text when correct/incorrect
+
+
+
+BUSINESS LOGIC
+  Evaluate if each letter is correct
+    input from user (keystroke)
+    comp against string / per keystroke
+
+    COUNTERS NEEDED
+    totalKeystrokes
+    numberCorrect
+    Accuracy = numberCorrect/totalKeystrokes
+
+    let counter = 0; <-- can be inside game object/instantiate with constructor
+     onKeystroke start compare()
+      totalKeystrokes++;
+      split string -> array
+        array[numberCorrect] === current keystroke
+      grab array location that matches counter
+      evaluate against keystroke input
+      pass if true 
+        numberCorrect++; -run array location comp off this variable
+      fail if false 
+        stuck in loop until they enter backspace char
+
+console
+cn
+
+waitingForBackspace = false;
+detect keystroke
+-> your function to determine if correct
+-> if incorrect disable the input box, -> waitingForBackspace = true;
+-> process all keystrokes
+-> when backspace is hit, enable input box -> waitingForBackspace = false;
+
+
+['c','o','n','s','o','l','e']
+is the letter typed === 'c'
+
+gather keystroke each press advances this
+
+  Calculate accuracy
+  Game object? - keeps counts and string
+  Save game state/data to localStorage (stretch)
+
+ERROR HANDLING
