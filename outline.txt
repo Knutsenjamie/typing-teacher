@@ -6,6 +6,11 @@ USER INTERFACE
   Detect user keystrokes
   Change styling of text when correct/incorrect
 
+  detect keystroke -> triggers a check
+  function returns true or false
+  if true highlight green
+  if false highlight red
+
 
 
 BUSINESS LOGIC
