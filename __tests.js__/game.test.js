@@ -3,6 +3,7 @@ import Game from '../src/js/game.js'
 describe('Game', () => {
   test('It should increment numberCorrect if the user enters the correct letter', () => {
     let game = new Game();
+    game.setTextArray("console");
     game.evalChar('c');
     expect(game.numberCorrect).toEqual(1);
   });
