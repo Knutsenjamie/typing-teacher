@@ -2,12 +2,23 @@ import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
-// import Game from './js/game.js';
+import Game from './js/game.js';
 
 $(document).ready(function(){
+  let gameObject = new Game();
   $('#inputTextbox').keydown(function(event){
-    let keypressEvent = String.fromCharCode(event.keyCode); 
+    let keypressEvent = event.key; 
     console.log(event.key);
+    gameObject.evalChar(keypressEvent);
+    //check for gameover
+    if(gameObject.gameOver){
+      console.log("Game finished!");
+    }
+    //maybe disable textbox if waiting for backspace
+    if(gameObject.waitingForBackspace){
+      $('#inputTextbox').attr()
+    }
+    //some sort of styling on... displayed text(?) if correct/incorrect
     let outputString;
     if (keypressEvent.toUpperCase() === "A"){
       outputString = `<span class="text-success">${keypressEvent}</span>`;
