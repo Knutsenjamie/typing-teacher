@@ -5,8 +5,12 @@ import './css/styles.css';
 // import Game from './js/game.js';
 
 function catchBackspace(event) {
+  console.log("This is event.key: "+event.key);
   if(event.key==='Backspace'){
     console.log("backspace pushed");
+    $(document).off("keydown", catchBackspace);
+    $('#inputTextbox').removeAttr('disabled');
+    $('#inputTextbox').focus();
   }
   else{
     console.log("other key pushed");
@@ -37,8 +41,8 @@ $(document).ready(function(){
       outputString = `<span class="text-success">${keypressEvent}</span>`;
       $('#inputTextbox').removeClass('is-invalid');
       $('#inputTextbox').addClass('is-valid');
-      // $('#inputTextbox').attr('disabled', 'disabled');
-      window.addEventListener("keydown", catchBackspace(event));
+      $('#inputTextbox').attr('disabled', 'disabled');
+      $(document).on("keydown", catchBackspace);
     } else {
       outputString = `<span class="text-danger">${keypressEvent}</span>`;
       $('#inputTextbox').removeClass('is-valid');
