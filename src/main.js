@@ -2,28 +2,43 @@ import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
-import Game from './js/game.js';
+// import Game from './js/game.js';
+
+function catchBackspace(event) {
+  if(event.key==='Backspace'){
+    console.log("backspace pushed");
+  }
+  else{
+    console.log("other key pushed");
+  }
+}
 
 $(document).ready(function(){
-  let gameObject = new Game();
+  // let gameObject = new Game();
   $('#inputTextbox').keydown(function(event){
     let keypressEvent = event.key; 
     console.log(event.key);
-    gameObject.evalChar(keypressEvent);
+    // gameObject.evalChar(keypressEvent);
     //check for gameover
-    if(gameObject.gameOver){
-      console.log("Game finished!");
-    }
+    // if(gameObject.gameOver){
+    //   console.log("Game finished!");
+    // }
     //maybe disable textbox if waiting for backspace
-    if(gameObject.waitingForBackspace){
-      $('#inputTextbox').attr()
-    }
+    
+    // if(gameObject.waitingForBackspace){
+    //   $('#inputTextbox').attr('disabled', 'disabled');
+    //   $('#inputTextbox').removeClass('is-valid');
+    //   $('#inputTextbox').addClass('is-invalid');
+    //   document.addEventListener("keydown", catchBackspace(event));
+    // }
     //some sort of styling on... displayed text(?) if correct/incorrect
     let outputString;
     if (keypressEvent.toUpperCase() === "A"){
       outputString = `<span class="text-success">${keypressEvent}</span>`;
       $('#inputTextbox').removeClass('is-invalid');
       $('#inputTextbox').addClass('is-valid');
+      // $('#inputTextbox').attr('disabled', 'disabled');
+      window.addEventListener("keydown", catchBackspace(event));
     } else {
       outputString = `<span class="text-danger">${keypressEvent}</span>`;
       $('#inputTextbox').removeClass('is-valid');
