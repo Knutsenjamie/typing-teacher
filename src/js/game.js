@@ -9,7 +9,7 @@ export default class Game {
   evalChar(keystrokeChar) {
     this.keystrokeCounter++;
     if(this.waitingForBackspace === true) {
-      if(keystrokeChar === 'backspace')  { //temp === backspace
+      if(keystrokeChar === "\u0008")  { //temp === backspace
         this.waitingForBackspace = false;
         } else {
         // recommend error message
@@ -27,3 +27,11 @@ export default class Game {
     return this.numberCorrect/this.keystrokeCounter;
   }
 }
+
+
+// let myChar = "\b" <--backspace char
+// undefined
+
+// myChar
+
+// "\u0008"  <--backspace utf code

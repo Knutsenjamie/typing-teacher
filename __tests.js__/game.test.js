@@ -14,7 +14,7 @@ describe('Game', () => {
   test('If waitingForBackspace, reset waitingForBackspace to false if backspace is entered', () => {
     let game = new Game();
     game.waitingForBackspace = true;
-    game.evalChar('backspace');
+    game.evalChar('\u0008');
     expect(game.waitingForBackspace).toEqual(false);
   });
   test('If waitingForBackspace, reset waitingForBackspace to false if backspace is entered', () => {
