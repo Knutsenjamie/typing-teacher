@@ -14,7 +14,7 @@ export default class Game {
   evalChar(keyCode) {
     this.keystrokeCounter++;
     if(this.waitingForBackspace === true) {
-      if(keystrokeChar === "\u0008")  { //temp === backspace
+      if(keyCode === 8)  { //8 === backspace
         this.waitingForBackspace = false;
         } else {
         // recommend error message
