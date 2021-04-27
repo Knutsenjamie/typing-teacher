@@ -18,15 +18,17 @@ function catchBackspace(event) {
 }
 
 $(document).ready(function(){
-  // let gameObject = new Game();
+  let gameObject = new Game();
+  let defaultText= "please type console.log()";
+  gameObject.setTextArray(defaultText);
+  $('.showText').html(`<p>${gameObject.textArray.join("")}</p>`);
   $('#inputTextbox').keydown(function(event){
     let keypressEvent = event.key; 
     console.log(event.key);
-    // gameObject.evalChar(keypressEvent);
-    //check for gameover
-    // if(gameObject.gameOver){
-    //   console.log("Game finished!");
-    // }
+    gameObject.evalChar(keypressEvent);
+    if(gameObject.gameOver){
+      console.log("Game finished!");
+    }
     //maybe disable textbox if waiting for backspace
     
     // if(gameObject.waitingForBackspace){
@@ -36,19 +38,19 @@ $(document).ready(function(){
     //   document.addEventListener("keydown", catchBackspace(event));
     // }
     //some sort of styling on... displayed text(?) if correct/incorrect
-    let outputString;
-    if (keypressEvent.toUpperCase() === "A"){
-      outputString = `<span class="text-success">${keypressEvent}</span>`;
-      $('#inputTextbox').removeClass('is-invalid');
-      $('#inputTextbox').addClass('is-valid');
-      $('#inputTextbox').attr('disabled', 'disabled');
-      $(document).on("keydown", catchBackspace);
-    } else {
-      outputString = `<span class="text-danger">${keypressEvent}</span>`;
-      $('#inputTextbox').removeClass('is-valid');
-      $('#inputTextbox').addClass('is-invalid');
-    }
-    $('.showText').append(outputString);
+    // let outputString;
+    // if (keypressEvent.toUpperCase() === "A"){
+    //   outputString = `<span class="text-success">${keypressEvent}</span>`;
+    //   $('#inputTextbox').removeClass('is-invalid');
+    //   $('#inputTextbox').addClass('is-valid');
+    //   $('#inputTextbox').attr('disabled', 'disabled');
+    //   $(document).on("keydown", catchBackspace);
+    // } else {
+    //   outputString = `<span class="text-danger">${keypressEvent}</span>`;
+    //   $('#inputTextbox').removeClass('is-valid');
+    //   $('#inputTextbox').addClass('is-invalid');
+    // }
+    // $('.showText').append(outputString);
   });
 
   $('#inputFile').change(function() {
