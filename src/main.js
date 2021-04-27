@@ -2,7 +2,7 @@ import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
-// import Game from './js/game.js';
+import Game from './js/game.js';
 
 function catchBackspace(event) {
   console.log("This is event.key: "+event.key);
