@@ -10,7 +10,7 @@ $(document).ready(function(){
 
     let outputString;
     if (keypressEvent.toUpperCase() === "A"){
-      outputString = `<textAr class="text-success">${keypressEvent}</span>`;
+      outputString = `<span class="text-success">${keypressEvent}</span>`;
       $('#inputTextbox').removeClass('is-invalid');
       $('#inputTextbox').addClass('is-valid');
     } else {
@@ -22,11 +22,17 @@ $(document).ready(function(){
   });
 
   $('#inputFile').change(function() {
-    console.log("A file was selected");
-    // const input = this;
-    const url = $(this).val();
-    console.log(url);
-  })
+    const file = this.files[0];
+    const reader = new FileReader();
+    let fileContent;
+    reader.onload = function(e) {
+      fileContent = e.target.result;
+      console.log(fileContent);
+      $('.showText').html(`<p>${fileContent}</p>`); //replace with return fileContent when migrating to backend
+    };
+    reader.readAsText(file);
+    //set text array in game object
+  });
 });
 
 // jQuery.get(thefile), function(data) {
