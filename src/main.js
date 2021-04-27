@@ -32,3 +32,8 @@ $(document).ready(function(){
 // jQuery.get(thefile), function(data) {
 //   $('#txtData').val(data);
 // }
+
+
+// jQuery.get('file', function(data) {
+//     const myTextfile = data;
+// });
