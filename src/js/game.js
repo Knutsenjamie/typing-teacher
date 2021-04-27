@@ -20,7 +20,7 @@ export default class Game {
         // recommend error message
       }
     } else if (keystrokeChar === this.textArray[this.numberCorrect]) {  
-      this.numberCorrect ++
+      this.numberCorrect++;
       if(this.numberCorrect === this.textArray.length){
         this.gameOver = true;
       }
