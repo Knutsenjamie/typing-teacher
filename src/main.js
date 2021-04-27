@@ -5,9 +5,9 @@ import './css/styles.css';
 // import Game from './js/game.js';
 
 $(document).ready(function(){
-  $('#inputTextbox').keypress(function(event){
+  $('#inputTextbox').keydown(function(event){
     let keypressEvent = String.fromCharCode(event.keyCode); 
-
+    console.log(event.key);
     let outputString;
     if (keypressEvent.toUpperCase() === "A"){
       outputString = `<span class="text-success">${keypressEvent}</span>`;
