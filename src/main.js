@@ -37,7 +37,8 @@ function catchBackspace(event, game) {
 function gameOver(game){
   $('#inputTextbox').attr('disabled', 'disabled');
   let percentAccuracy=Math.round(game.getAccuracy()*100);
-  $('#inputTextbox').val(`Good job! Your accuracy was ${percentAccuracy}%`);
+  let speed = Math.round(game.textArray.length/(game.time/1000));
+  $('#inputTextbox').val(`Good job! Your accuracy was ${percentAccuracy}% and your speed was ${speed} characters per second`);
 }
 
 function highlightCompletedText(game){
@@ -51,16 +52,24 @@ function highlightCompletedText(game){
 
 $(document).ready(function(){
   let gameObject = new Game();
+  let startTime;
+  let endTime;
   let defaultText= "this is the default practice typing text";
   gameObject.setTextArray(defaultText);
   $('#inputTextbox').addClass('is-valid');
   $('.showText').html(`<p>${gameObject.textArray.join("")}</p>`);
   $('#inputTextbox').keydown(function(event){
+    if (gameObject.keystrokeCounter===0){
+      startTime = new Date().getTime();
+    }
     let keypressEvent = event.key; 
     console.log(event.key);
     gameObject.evalChar(keypressEvent);
     if(gameObject.gameOver){
       console.log("Game finished!");
+      endTime=new Date().getTime();
+      gameObject.time = endTime - startTime;
+      console.log("This is the time: " + gameObject.time);
       gameOver(gameObject);
     }
     
@@ -105,7 +114,7 @@ $(document).ready(function(){
       gameObject.setTextArray(fileContent);
       console.log(fileContent);
       $('.showText').html(`<p>${fileContent}</p>`); //replace with return fileContent when migrating to backend
-      console.log("This is inside reader.onload: Your textArray is now: " + gameObject.textArray);
+      console.log("This is inside reader.onload: Your textArray is now: " + JSON.stringify(gameObject.textArray));
     };
     reader.readAsText(file);
   });

@@ -8,7 +8,18 @@ export default class Game {
   }
 
   setTextArray(text){
-    this.textArray=String(text).split('');
+    let tempTextArray = String(text).split('');
+    this.textArray = [];
+    for (let i=0; i<tempTextArray.length; i++){
+      if (tempTextArray[i]==="\r" || tempTextArray[i] === "\n"){
+        this.textArray.push("Enter");
+      } else if (tempTextArray[i]==="\t"){
+        this.textArray.push("Tab");
+      } else {
+        this.textArray.push(tempTextArray[i]);
+      }
+    }
+    // this.textArray = String(text).split('');
   }
 
   evalChar(keystrokeChar) {
