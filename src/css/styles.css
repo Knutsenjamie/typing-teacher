@@ -1,42 +1,53 @@
 body {
   font-family: 'Cutive Mono', monospace;
   font-family: 'Share Tech Mono', monospace;
+  background-color: #7acbd7;
   }
   
   input[type=text] {
     background-color: grey;
-  }
-
-  label {
-    float: left;
+    border: 1px solid grey;
+    color: #dc3545;
   }
 
   input[type=text]:focus, textarea:focus {
-    box-shadow: 0 0 5px rgb(81, 238, 212);
-    padding: 3px 0px 3px 3px;
-    margin: 5px 1px 3px 0px;
-    border: 1px solid  rgb(81, 238, 212);
+    box-shadow: 0 0 5px #D9F868;
+    /* padding: 3px 0px 3px 3px; */
+    /* margin: 5px 1px 3px 0px; */
+    border: 1px solid  #D9F868;
     background-color: rgb(189, 189, 189);
-  }
-
-  input:focus + label {
-    vertical-align: center;
-    color: red;
+    color:#28a745;
+    /* box-sizing: border-box; */
   }
 
   #showTextCont {
-
+    /* margin-top: 10px; */
+    padding-top: 10px;
   }
 
   #inputText {
-
+    /* margin-top: 10px; */
+    padding-top: 10px;
   }
 
   #inputBox {
-
+    /* margin-top: 10px; */
+    padding-top: 10px;
   }
 
   #file {
-
+    /* margin-top: 20px; */
   }
 
+  #topBar {
+    background-color: #f96876;
+    padding: 20px;
+    /* height: 100px; */
+  }
+
+  #title {
+    /* color: #eefdb8; */
+    /* color: #fdb9bf; */
+    padding-top: 20px;
+    /* font-weight: bold; */
+  }
