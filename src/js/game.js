@@ -12,6 +12,10 @@ export default class Game {
   }
 
   evalChar(keystrokeChar) {
+    if(keystrokeChar === 'Shift') {
+      console.log("Shift pressed, evalChar stopping");
+      return;
+    }
     this.keystrokeCounter++;
     if(this.waitingForBackspace === true) {
       if(keystrokeChar === 'Backspace')  { //8 === backspace
@@ -24,11 +28,18 @@ export default class Game {
       if(this.numberCorrect === this.textArray.length){
         this.gameOver = true;
       }
-    } //else {
-    //   this.waitingForBackspace = true;
-    // }
+    } else {
+      this.waitingForBackspace = true;
+    }
   }
   getAccuracy(){
     return this.numberCorrect/this.keystrokeCounter;
+  }
+
+  restartGame(){
+    this.numberCorrect = 0;
+    this.keystrokeCounter = 0;
+    this.waitingForBackspace = false;
+    this.gameOver = false;
   }
 }

@@ -4,23 +4,56 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import Game from './js/game.js';
 
-function catchBackspace(event) {
+function catchBackspace(event, game) {
   console.log("This is event.key: "+event.key);
-  if(event.key==='Backspace'){
+  let keystroke = event.key;
+  game.evalChar(keystroke);
+  if(!game.waitingForBackspace){
     console.log("backspace pushed");
-    $(document).off("keydown", catchBackspace);
+    $(document).off();
     $('#inputTextbox').removeAttr('disabled');
+    $('#inputTextbox').removeClass('is-invalid');
+    $('#inputTextbox').addClass('is-valid');
     $('#inputTextbox').focus();
+    event.preventDefault();
+    // let inputTextboxArray=$('#inputTextbox').val().split("");
+    // game.numberCorrect=0;
+    // for(let i=0; i<inputTextboxArray.length; i++){
+    //   if(game.textArray[i]===inputTextboxArray[i]){
+    //     game.numberCorrect++;
+    //     console.log("TW: " + game.textArray[i]);
+    //   }
+    // }
+    console.log("gameObject.waitingForBackspace is " + game.waitingForBackspace);
+    console.log("next letter to type: " + game.textArray[game.numberCorrect]);
+    // gameObject.waitingForBackspace=true;
+    // console.log("After it's set to true, gameObject.waitingForBackspace is " + gameObject.waitingForBackspace);
   }
   else{
     console.log("other key pushed");
   }
 }
 
+function gameOver(game){
+  $('#inputTextbox').attr('disabled', 'disabled');
+  let percentAccuracy=Math.round(game.getAccuracy()*100);
+  $('#inputTextbox').val(`Good job! Your accuracy was ${percentAccuracy}%`);
+}
+
+function highlightCompletedText(game){
+  let textArray = [...game.textArray];
+  const positionToInsertClosingTag = game.numberCorrect;
+  textArray.splice(positionToInsertClosingTag, 0, '</span>');
+  textArray.unshift('<p><span class="text-success">');
+  textArray.push('</p');
+  $('.showText').html(textArray.join(""));
+}
+
 $(document).ready(function(){
   let gameObject = new Game();
-  let defaultText= "please type console.log()";
+  let defaultText= "this is the default practice typing text";
   gameObject.setTextArray(defaultText);
+  $('#inputTextbox').addClass('is-valid');
   $('.showText').html(`<p>${gameObject.textArray.join("")}</p>`);
   $('#inputTextbox').keydown(function(event){
     let keypressEvent = event.key; 
@@ -28,23 +61,27 @@ $(document).ready(function(){
     gameObject.evalChar(keypressEvent);
     if(gameObject.gameOver){
       console.log("Game finished!");
+      gameOver(gameObject);
     }
-    //maybe disable textbox if waiting for backspace
     
-    // if(gameObject.waitingForBackspace){
-    //   $('#inputTextbox').attr('disabled', 'disabled');
-    //   $('#inputTextbox').removeClass('is-valid');
-    //   $('#inputTextbox').addClass('is-invalid');
-    //   document.addEventListener("keydown", catchBackspace(event));
-    // }
-    //some sort of styling on... displayed text(?) if correct/incorrect
+    if(gameObject.waitingForBackspace){
+      $('#inputTextbox').attr('disabled', 'disabled');
+      $('#inputTextbox').removeClass('is-valid');
+      $('#inputTextbox').addClass('is-invalid');
+      $(document).on("keydown", function(event){
+        catchBackspace(event, gameObject);
+      });
+    } else {
+      highlightCompletedText(gameObject);
+    }
+    // some sort of styling on... displayed text(?) if correct/incorrect
     // let outputString;
     // if (keypressEvent.toUpperCase() === "A"){
     //   outputString = `<span class="text-success">${keypressEvent}</span>`;
     //   $('#inputTextbox').removeClass('is-invalid');
     //   $('#inputTextbox').addClass('is-valid');
     //   $('#inputTextbox').attr('disabled', 'disabled');
-    //   $(document).on("keydown", catchBackspace);
+      
     // } else {
     //   outputString = `<span class="text-danger">${keypressEvent}</span>`;
     //   $('#inputTextbox').removeClass('is-valid');
@@ -54,16 +91,23 @@ $(document).ready(function(){
   });
 
   $('#inputFile').change(function() {
+    $('#inputTextbox').val("");
+    $('#inputTextbox').addClass('is-valid');
+    $('#inputTextbox').removeClass('is-invalid');
+    $('#inputTextbox').removeAttr('disabled');
+    $('#inputTextbox').focus();
+    gameObject.restartGame();
     const file = this.files[0];
     const reader = new FileReader();
     let fileContent;
     reader.onload = function(e) {
       fileContent = e.target.result;
+      gameObject.setTextArray(fileContent);
       console.log(fileContent);
       $('.showText').html(`<p>${fileContent}</p>`); //replace with return fileContent when migrating to backend
+      console.log("This is inside reader.onload: Your textArray is now: " + gameObject.textArray);
     };
     reader.readAsText(file);
-    //set text array in game object
   });
 });
 
