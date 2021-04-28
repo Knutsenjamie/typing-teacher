@@ -1,0 +1,60 @@
+body {
+  font-family: 'Cutive Mono', monospace;
+  font-family: 'Share Tech Mono', monospace;
+  /* background-color: #7acbd7; */
+    background-color: #AEE5ED;
+  }
+  
+  textarea[type=text] {
+    background-color: #282C34;
+    border: 1px solid grey;
+    /* color: #dc3545; */
+  }
+
+  textarea[type=text]:focus, textarea:focus {
+    box-shadow: 0 0 15px #eefdb8;
+    /* padding: 3px 0px 3px 3px; */
+    /* margin: 5px 1px 3px 0px; */
+    /* border: 5px solid  #eefdb8; */
+    background-color: #282C34;
+    color: #eefdb8;
+    /* box-sizing: border-box; */
+  }
+
+  #showTextCont {
+    /* margin-top: 10px; */
+    padding-top: 10px;
+  }
+
+  #inputText {
+    /* margin-top: 10px; */
+    padding-top: 10px;
+  }
+
+  #inputBox {
+    /* margin-top: 10px; */
+    padding-top: 10px;
+    color: #eefdb8;
+  }
+
+  #file {
+    /* margin-top: 20px; */
+  }
+
+  #topBar {
+    background-color: #f96876;
+    padding: 20px;
+    /* height: 100px; */
+  }
+
+  #title {
+    color: #eefdb8;
+    /* color: #fdb9bf; */
+    padding-top: 20px;
+    /* font-weight: bold; */
+  }
+
+  .typeArea {
+    width: 30%;
+    display: block;
+  }
