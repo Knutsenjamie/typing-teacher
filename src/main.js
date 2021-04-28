@@ -64,6 +64,12 @@ $(document).ready(function(){
     }
     let keypressEvent = event.key; 
     console.log(event.key);
+    if(keypressEvent === 'Tab'){
+      event.preventDefault();
+      let cursorPosition = $('#inputTextbox').selectionStart;
+      let currentContent = $('#inputTextbox').val();
+      $('#inputTextbox').val(currentContent + '\t');
+    }
     gameObject.evalChar(keypressEvent);
     if(gameObject.gameOver){
       console.log("Game finished!");
