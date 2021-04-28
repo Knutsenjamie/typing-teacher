@@ -1,0 +1,42 @@
+body {
+  font-family: 'Cutive Mono', monospace;
+  font-family: 'Share Tech Mono', monospace;
+  }
+  
+  input[type=text] {
+    background-color: grey;
+  }
+
+  label {
+    float: left;
+  }
+
+  input[type=text]:focus, textarea:focus {
+    box-shadow: 0 0 5px rgb(81, 238, 212);
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 1px solid  rgb(81, 238, 212);
+    background-color: rgb(189, 189, 189);
+  }
+
+  input:focus + label {
+    vertical-align: center;
+    color: red;
+  }
+
+  #showTextCont {
+
+  }
+
+  #inputText {
+
+  }
+
+  #inputBox {
+
+  }
+
+  #file {
+
+  }
+
