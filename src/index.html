@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <title>Typing Teacher</title>
 </head>
 <body>
@@ -25,11 +25,13 @@
           <div class="showText"></div>
         </div>
         <div id="inputBox">
-          <textarea id="inputTextbox" type="text" rows = "5" cols = "60" placeholder ="Enter Here" name = "description">
+          <textarea id="inputTextbox" type="text" rows = "5" cols = "60" placeholder ="Enter Here" name = "description" onfocus="this.placeholder=''">
           </textarea><br>
+          <div class ="invalid-feedback">Incorrect key - press Backspace to continue</div>
         </div>
       </div>
     </div>
+    <button type="button" id="restartButton">Restart</button>
   </div> 
 </body>
 </html>

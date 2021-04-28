@@ -7,51 +7,52 @@ body {
   
   textarea[type=text] {
     background-color: #282C34;
-    border: 1px solid grey;
-    /* color: #dc3545; */
+    border: 2px solid grey;
+    color: #ff0000;
   }
 
   textarea[type=text]:focus, textarea:focus {
-    box-shadow: 0 0 15px #eefdb8;
-    /* padding: 3px 0px 3px 3px; */
-    /* margin: 5px 1px 3px 0px; */
-    /* border: 5px solid  #eefdb8; */
-    background-color: #282C34;
+    box-shadow: 0 0 10px #eefdb8;
+    border: 1.5px solid  #f0fdc1;
+    background-color: #28342d;
     color: #eefdb8;
-    /* box-sizing: border-box; */
   }
 
+  textarea[type=text][disabled] {
+    color: rgb(255, 0, 0);
+    font-style: bold;
+    box-shadow: 0 0 14px #eefdb8;
+    border: 1.5px solid  #fddcc1
+ }
+
   #showTextCont {
-    /* margin-top: 10px; */
     padding-top: 10px;
   }
 
   #inputText {
-    /* margin-top: 10px; */
     padding-top: 10px;
   }
 
   #inputBox {
-    /* margin-top: 10px; */
     padding-top: 10px;
     color: #eefdb8;
   }
 
   #file {
-    /* margin-top: 20px; */
+
   }
 
   #topBar {
     background-color: #f96876;
     padding: 20px;
-    /* height: 100px; */
   }
 
   #title {
     color: #eefdb8;
-    /* color: #fdb9bf; */
     padding-top: 20px;
-    /* font-weight: bold; */
+    font-weight: bold;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #9fdbc9;
   }
 
   .typeArea {

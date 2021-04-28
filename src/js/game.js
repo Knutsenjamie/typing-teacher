@@ -11,6 +11,7 @@ export default class Game {
     let tempTextArray = String(text).split('');
     this.textArray = [];
     for (let i=0; i<tempTextArray.length; i++){
+      console.log("" + JSON.stringify(tempTextArray[i]));
       if (tempTextArray[i]==="\r" || tempTextArray[i] === "\n"){
         this.textArray.push("Enter");
       } else if (tempTextArray[i]==="\t"){
