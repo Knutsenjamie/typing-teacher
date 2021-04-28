@@ -8,10 +8,25 @@ export default class Game {
   }
 
   setTextArray(text){
-    this.textArray=String(text).split('');
+    let tempTextArray = String(text).split('');
+    this.textArray = [];
+    for (let i=0; i<tempTextArray.length; i++){
+      if (tempTextArray[i]==="\r" || tempTextArray[i] === "\n"){
+        this.textArray.push("Enter");
+      } else if (tempTextArray[i]==="\t"){
+        this.textArray.push("Tab");
+      } else {
+        this.textArray.push(tempTextArray[i]);
+      }
+    }
+    // this.textArray = String(text).split('');
   }
 
   evalChar(keystrokeChar) {
+    if(keystrokeChar === 'Shift') {
+      console.log("Shift pressed, evalChar stopping");
+      return;
+    }
     this.keystrokeCounter++;
     if(this.waitingForBackspace === true) {
       if(keystrokeChar === 'Backspace')  { //8 === backspace
@@ -24,11 +39,18 @@ export default class Game {
       if(this.numberCorrect === this.textArray.length){
         this.gameOver = true;
       }
-    } //else {
-    //   this.waitingForBackspace = true;
-    // }
+    } else {
+      this.waitingForBackspace = true;
+    }
   }
   getAccuracy(){
     return this.numberCorrect/this.keystrokeCounter;
+  }
+
+  restartGame(){
+    this.numberCorrect = 0;
+    this.keystrokeCounter = 0;
+    this.waitingForBackspace = false;
+    this.gameOver = false;
   }
 }
