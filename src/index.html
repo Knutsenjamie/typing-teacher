@@ -4,18 +4,34 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">
   <title>Typing Teacher</title>
 </head>
 <body>
+  <div id="topBar">
+    <!-- <div class="container">
+    </div> -->
+  </div>
   <div class="container">
-    <h1>Test Your Typing Skills</h1>
+    <div id="topArea"></div>
+    <h1 id="title">Test Your Typing Skills</h1>
     <div class="input-group has-validation">
-      <label for="inputTextbox">Enter Here</label>
-      <input id="inputTextbox" type="text" size="65" class="form-control">
-      <br>
-      <input id="inputFile" type="file" class="form-control-file">
+      <div id="file">
+        <input id="inputFile" autocomplete="off" type="file" class="form-control-file"><br>
+      </div>
+      <div class="typeArea">
+        <div id="showTextCont">
+          <div class="showText"></div>
+        </div>
+        <div id="inputBox">
+          <textarea id="inputTextbox" type="text" rows = "5" cols = "60" placeholder ="Enter Here" name = "description">
+          </textarea><br>
+        </div>
+      </div>
     </div>
-    <div class="showText"></div>
   </div> 
 </body>
 </html>
+
+<!-- <input id="inputTextbox" type="text" placeholder="Enter Here" size="65" class="form-control" autocomplete="off"> -->

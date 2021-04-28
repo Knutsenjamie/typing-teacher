@@ -24,9 +24,9 @@ export default class Game {
       if(this.numberCorrect === this.textArray.length){
         this.gameOver = true;
       }
-    } else {
-      this.waitingForBackspace = true;
-    }
+    } //else {
+    //   this.waitingForBackspace = true;
+    // }
   }
   getAccuracy(){
     return this.numberCorrect/this.keystrokeCounter;
