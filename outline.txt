@@ -56,3 +56,14 @@ gather keystroke each press advances this
   Save game state/data to localStorage (stretch)
 
 ERROR HANDLING
+
+SAVE PROGRESS
+
+start typing: get time
+save progress: timeElapsed += current time - time of last save 
+
+leave the page
+elapsed time will have been added
+
+open the page
+set start time to current time

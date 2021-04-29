@@ -3,8 +3,10 @@ export default class Game {
     this.numberCorrect = 0;
     this.keystrokeCounter = 0;
     this.waitingForBackspace = false;
-    this.textArray = [];
+    this.textArray = ['d','e','f','a','u','l','t'];
     this.gameOver = false;
+    this.timeElapsed = 0;
+    this.timeLastSave = 0;
   }
 
   setTextArray(text){
@@ -19,7 +21,6 @@ export default class Game {
         this.textArray.push(tempTextArray[i]);
       }
     }
-    // this.textArray = String(text).split('');
   }
 
   evalChar(keystrokeChar) {
@@ -31,16 +32,20 @@ export default class Game {
     if(this.waitingForBackspace === true) {
       if(keystrokeChar === 'Backspace')  { //8 === backspace
         this.waitingForBackspace = false;
-        } else {
+        this.saveProgress();
+      } else {
         // recommend error message
       }
     } else if (keystrokeChar === this.textArray[this.numberCorrect]) {  
       this.numberCorrect++;
+      this.saveProgress();
       if(this.numberCorrect === this.textArray.length){
         this.gameOver = true;
+        
       }
     } else {
       this.waitingForBackspace = true;
+      this.saveProgress();
     }
   }
   getAccuracy(){
@@ -48,9 +53,24 @@ export default class Game {
   }
 
   restartGame(){
-    this.numberCorrect = 0;
-    this.keystrokeCounter = 0;
-    this.waitingForBackspace = false;
-    this.gameOver = false;
+    localStorage.clear();
+    location.reload(true);
+  }
+
+  static makeObject(jsonString) {
+    let jsonObject =  JSON.parse(jsonString);
+    let game = new Game();
+    Object.assign(game, jsonObject);
+    return game;
+  }
+
+  saveProgress() {
+    let currentTime = new Date().getTime()/1000;
+    this.timeElapsed += (currentTime - this.timeLastSave);
+    console.log("add to time elapsed: "+(currentTime - this.timeLastSave));
+    console.log("save progress time elapsed: " + this.timeElapsed);
+    this.timeLastSave = currentTime;
+    console.log("saved at: "+this.timeLastSave);
+    localStorage.setItem('game',JSON.stringify(this));
   }
 }
