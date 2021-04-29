@@ -29,7 +29,7 @@ function gameOver(game){
   $('#inputTextbox').attr('disabled', 'disabled');
   let percentAccuracy=Math.round(game.getAccuracy()*100);
 
-  let speed = (game.textArray.length/(game.timeElapsed));
+  let speed = Math.round(game.textArray.length/(game.timeElapsed));
   $('#inputTextbox').val(`Good job! Your accuracy was ${percentAccuracy}% and your speed was ${speed} characters per second`);
 }
 
@@ -83,7 +83,6 @@ $(document).ready(function() {
     gameObject.evalChar(keypressEvent);
     if(gameObject.gameOver) {
       console.log("game end time elapsed is: "+gameObject.timeElapsed);
-  
       gameOver(gameObject);
     }
     
@@ -98,8 +97,6 @@ $(document).ready(function() {
       highlightCompletedText(gameObject);
     }
   });
-
-  
 
   $('#inputFile').change(function() {
     $('#inputTextbox').val("");
