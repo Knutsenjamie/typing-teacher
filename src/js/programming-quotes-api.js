@@ -14,32 +14,14 @@ export default class ProgrammingQuotesApi{
   }
 
   static isContentSafe(content){
-    const flaggingWords = ['sex', 'slaves', 'violence']
-    flaggingWords.forEach(word => {
+    const flaggingWords = ['sex', 'slaves', 'violence', 'bikinis', 'bitch', 'fuck', 'shit'];
+    let isSafe = true;
+    flaggingWords.forEach((word) => {
       if (content.includes(word)){
-        return false;
+        console.log('bad word found');
+        isSafe = false;
       }
     });
-    return true;
-  }
-
-  static getSafeRandomQuote(){
-    while (true){
-      let randomQuotePromise = this.getRandomQuotePromise();
-      randomQuotePromise
-        .then(function(randomQuoteResponse){
-          if (randomQuoteResponse instanceof Error){
-            throw Error(`Programming Quotes API Request Error: ${randomQuoteResponse.message}`);
-          }
-          const isSafe = this.isContentSafe(randomQuoteResponse.quote);
-          if (isSafe){
-            return randomQuoteResponse;
-          }
-        })
-        .catch(function (error){
-          console.log(error);
-          return error;
-        });
-    }
+    return isSafe;
   }
 }

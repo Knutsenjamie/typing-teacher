@@ -11,16 +11,16 @@ export default class Game {
     let tempTextArray = String(text).split('');
     this.textArray = [];
     for (let i=0; i<tempTextArray.length; i++){
-      console.log("" + JSON.stringify(tempTextArray[i]));
       if (tempTextArray[i]==="\r" || tempTextArray[i] === "\n"){
         this.textArray.push("Enter");
       } else if (tempTextArray[i]==="\t"){
         this.textArray.push("Tab");
+      } else if (tempTextArray[i] === '’'){
+        this.textArray.push("'");
       } else {
         this.textArray.push(tempTextArray[i]);
       }
     }
-    // this.textArray = String(text).split('');
   }
 
   evalChar(keystrokeChar) {

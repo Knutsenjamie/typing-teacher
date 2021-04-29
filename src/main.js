@@ -3,6 +3,7 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import Game from './js/game.js';
+import ProgrammingQuotesApi from './js/programming-quotes-api.js';
 
 function catchBackspace(event, game) {
   console.log("This is event.key: "+event.key);
@@ -40,14 +41,35 @@ function highlightCompletedText(game){
   $('.showText').html(textArray.join(""));
 }
 
+function getSafeRandomQuote(game){
+  let randomQuotePromise = ProgrammingQuotesApi.getRandomQuotePromise();
+  randomQuotePromise
+  .then(function(randomQuoteResponse){
+    if (randomQuoteResponse instanceof Error){
+      throw Error(`Programming Quotes API Request Error: ${randomQuoteResponse.message}`);
+    }
+    console.log(randomQuoteResponse);
+    const isSafe = ProgrammingQuotesApi.isContentSafe(randomQuoteResponse.quote);
+    console.log(`isSafe in then: ${isSafe}`);
+    if (isSafe){
+      game.setTextArray(randomQuoteResponse.quote);
+      $('.showText').html(`<p>${randomQuoteResponse.quote}</p>`);
+      return;
+    }
+    getSafeRandomQuote(game);
+  })
+  .catch(function (error){
+    console.log(error);
+    return error;
+  });
+}
+
 $(document).ready(function(){
   let gameObject = new Game();
   let startTime;
   let endTime;
-  let defaultText= "this is the default practice typing text";
-  gameObject.setTextArray(defaultText);
-  $('#inputTextbox').addClass('is-valid');
-  $('.showText').html(`<p>${gameObject.textArray.join("")}</p>`);
+  getSafeRandomQuote(gameObject);
+
   $('#inputTextbox').keydown(function(event){
     if (gameObject.keystrokeCounter===0){
       startTime = new Date().getTime();
@@ -110,4 +132,8 @@ $(document).ready(function(){
     $('#inputTextbox').removeAttr('disabled');
     $('#inputTextbox').focus();
   });
+
+  $("#randomQuoteButton").click(function(){
+    getSafeRandomQuote(gameObject);
+  })
 });
