@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Share+Tech+Mono&display=swap"
+    rel="stylesheet">
   <title>Typing Teacher</title>
 </head>
+
 <body>
-  <div id="topBar">
-    <!-- <div class="container">
-    </div> -->
-  </div>
+  <div id="topBar"></div>
   <div class="container">
     <div id="topArea"></div>
-    <h1 id="title">Test Your Typing Skills</h1>
+    <p id="title">Test Your Typing Skills</p>
     <div class="input-group has-validation">
       <div id="file">
         <input id="inputFile" autocomplete="off" type="file" class="form-control-file"><br>
@@ -25,16 +25,19 @@
           <div class="showText"></div>
         </div>
         <div id="inputBox">
-          <textarea id="inputTextbox" class="is-valid" type="text" rows = "5" cols = "60" placeholder ="Enter Here" name = "description" onfocus="this.placeholder=''">
+          <textarea id="inputTextbox" class="is-valid" type="text" rows="5" cols="60" placeholder="Enter Here"
+            name="description" onfocus="this.placeholder=''">
           </textarea><br>
-          <div class ="invalid-feedback">Incorrect key - press Backspace to continue</div>
+          <div class="invalid-feedback">Incorrect key - press Backspace to continue</div>
         </div>
       </div>
     </div>
-    <button type="button" id="randomQuoteButton">Generate Random Programming Quote</button>
-    <button type="button" id="restartButton">Restart</button>
-  </div> 
+    <div id="buttons">
+      <button type="button" id="randomQuoteButton">Generate Random Programming Quote</button>
+      <button type="button" id="restartButton">Restart</button>
+    </div>
+  </div>
+  <div id="bottomBar"></div>
 </body>
-</html>
 
-<!-- <input id="inputTextbox" type="text" placeholder="Enter Here" size="65" class="form-control" autocomplete="off"> -->
+</html>

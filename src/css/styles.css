@@ -1,61 +1,93 @@
 body {
   font-family: 'Cutive Mono', monospace;
   font-family: 'Share Tech Mono', monospace;
-  /* background-color: #7acbd7; */
-    background-color: #AEE5ED;
-  }
-  
-  textarea[type=text] {
-    background-color: #282C34;
-    border: 2px solid grey;
-    color: #ff0000;
-  }
+  background-color: #86afb6;
+}
 
-  textarea[type=text]:focus, textarea:focus {
-    box-shadow: 0 0 10px #eefdb8;
-    border: 1.5px solid  #f0fdc1;
-    background-color: #28342d;
-    color: #eefdb8;
-  }
+textarea[type=text] {
+  background-color: #282C34;
+  border: 2px solid grey;
+  color: #ff0000;
+}
 
-  textarea[type=text][disabled] {
-    color: rgb(255, 0, 0);
-    font-style: bold;
-    box-shadow: 0 0 14px #eefdb8;
-    border: 1.5px solid  #fddcc1
- }
+textarea[type=text]:focus, textarea:focus {
+  box-shadow: 0 0 10px #eefdb8;
+  border: 1.5px solid  #f0fdc1;
+  background-color: #28342d;
+  color: #eefdb8;
+}
 
-  #showTextCont {
-    padding-top: 10px;
-  }
+textarea[type=text][disabled] {
+  color: rgb(255, 0, 0);
+  font-style: bold;
+  box-shadow: 0 0 14px #eefdb8;
+  border: 1.5px solid  #fddcc1
+}
 
-  #inputText {
-    padding-top: 10px;
-  }
+#showTextCont {
+  padding-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 
+}
 
-  #inputBox {
-    padding-top: 10px;
-    color: #eefdb8;
-  }
+#inputText {
+  padding-top: 10px;
+}
 
-  #file {
+#inputBox {
+  padding-top: 10px;
+  color: #eefdb8;
+}
 
-  }
+#file {
 
-  #topBar {
-    background-color: #f96876;
-    padding: 20px;
-  }
+}
 
-  #title {
-    color: #eefdb8;
-    padding-top: 20px;
-    font-weight: bold;
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: #9fdbc9;
-  }
+#topBar {
+  background-color: #ff7381;
+  padding: 40px;
+}
 
-  .typeArea {
-    width: 30%;
-    display: block;
-  }
+#title {
+  font-size: 50px;
+  color: #eefdb8;
+  padding-top: 20px;
+  font-weight: bold;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #86afb6;
+  text-align: center;
+}
+
+.typeArea {
+  width: 30%;
+  display: block;
+}
+
+.container {
+  box-sizing: content-box;
+  background-color: #AEE5ED;
+  position: relative;
+  top: -20px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  height: 85vh;
+  border: solid 10px #86afb6c4
+}
+
+#bottomBar {
+  background-color: #ff7381;
+  padding: 40px;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  z-index: -1;
+}
+
+#buttons {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
