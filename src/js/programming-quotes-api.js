@@ -1,7 +1,7 @@
 export default class ProgrammingQuotesApi{
   static getRandomQuotePromise(){
     const url = "http://quotes.stormconsultancy.co.uk/random.json";
-    return fetch(url)
+    return fetch(url, { mode: 'cors'})
       .then(function(response) {
         if(!response.ok) {
           throw Error(response.statusText);
@@ -18,7 +18,6 @@ export default class ProgrammingQuotesApi{
     let isSafe = true;
     flaggingWords.forEach((word) => {
       if (content.includes(word)){
-        console.log('bad word found');
         isSafe = false;
       }
     });

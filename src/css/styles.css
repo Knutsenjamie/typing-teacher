@@ -28,7 +28,6 @@ textarea[type=text][disabled] {
   padding-top: 10px;
   margin-left: auto;
   margin-right: auto;
-  width: 
 }
 
 #inputText {
@@ -40,9 +39,6 @@ textarea[type=text][disabled] {
   color: #eefdb8;
 }
 
-#file {
-
-}
 
 #topBar {
   background-color: #ff7381;

@@ -25,15 +25,12 @@ export default class Game {
 
   evalChar(keystrokeChar) {
     if(keystrokeChar === 'Shift') {
-      console.log("Shift pressed, evalChar stopping");
       return;
     }
     this.keystrokeCounter++;
     if(this.waitingForBackspace === true) {
-      if(keystrokeChar === 'Backspace')  { //8 === backspace
+      if(keystrokeChar === 'Backspace')  {
         this.waitingForBackspace = false;
-        } else {
-        // recommend error message
       }
     } else if (keystrokeChar === this.textArray[this.numberCorrect]) {  
       this.numberCorrect++;
@@ -44,6 +41,7 @@ export default class Game {
       this.waitingForBackspace = true;
     }
   }
+  
   getAccuracy(){
     return this.numberCorrect/this.keystrokeCounter;
   }

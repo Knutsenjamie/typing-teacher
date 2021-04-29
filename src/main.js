@@ -6,24 +6,16 @@ import Game from "./js/game.js";
 import ProgrammingQuotesApi from "./js/programming-quotes-api.js";
 
 function catchBackspace(event, game) {
-  console.log("This is event.key: " + event.key);
   let keystroke = event.key;
   game.evalChar(keystroke);
   if (!game.waitingForBackspace) {
-    console.log("backspace pushed");
     $(document).off();
     $("#inputTextbox").removeAttr("disabled");
     $("#inputTextbox").removeClass("is-invalid");
     $("#inputTextbox").addClass("is-valid");
     $("#inputTextbox").focus();
     event.preventDefault();
-    console.log(
-      "gameObject.waitingForBackspace is " + game.waitingForBackspace
-    );
-    console.log("next letter to type: " + game.textArray[game.numberCorrect]);
-  } else {
-    console.log("other key pushed");
-  }
+  } 
 }
 
 function gameOver(game) {
@@ -53,20 +45,17 @@ function getSafeRandomQuote(game) {
           `Programming Quotes API Request Error: ${randomQuoteResponse.message}`
         );
       }
-      console.log(randomQuoteResponse);
       const isSafe = ProgrammingQuotesApi.isContentSafe(
         randomQuoteResponse.quote
       );
-      console.log(`isSafe in then: ${isSafe}`);
       if (isSafe) {
         game.setTextArray(randomQuoteResponse.quote);
         $(".showText").html(`<p>${randomQuoteResponse.quote}</p>`);
         return;
       }
-      getSafeRandomQuote(game);
+      getSafeRandomQuote(game); //recursive maybe should put additional restrictions on in the future (limit # of calls)
     })
     .catch(function (error) {
-      console.log(error);
       return error;
     });
 }
@@ -82,7 +71,6 @@ $(document).ready(function () {
       startTime = new Date().getTime();
     }
     let keypressEvent = event.key;
-    console.log(event.key);
     if (keypressEvent === "Tab") {
       event.preventDefault();
       let currentContent = $("#inputTextbox").val();
@@ -90,10 +78,8 @@ $(document).ready(function () {
     }
     gameObject.evalChar(keypressEvent);
     if (gameObject.gameOver) {
-      console.log("Game finished!");
       endTime = new Date().getTime();
       gameObject.time = endTime - startTime;
-      console.log("This is the time: " + gameObject.time);
       gameOver(gameObject);
     }
 
@@ -123,12 +109,7 @@ $(document).ready(function () {
     reader.onload = function (e) {
       fileContent = e.target.result;
       gameObject.setTextArray(fileContent);
-      console.log(fileContent);
       $(".showText").html(`<p>${fileContent}</p>`);
-      console.log(
-        "This is inside reader.onload: Your textArray is now: " +
-          JSON.stringify(gameObject.textArray)
-      );
     };
     reader.readAsText(file);
   });
