@@ -1,5 +1,5 @@
 export default class ProgrammingQuotesApi{
-  static getRandomQuote(){
+  static getRandomQuotePromise(){
     const url = "http://quotes.stormconsultancy.co.uk/random.json";
     return fetch(url)
       .then(function(response) {
@@ -21,5 +21,25 @@ export default class ProgrammingQuotesApi{
       }
     });
     return true;
+  }
+
+  static getSafeRandomQuote(){
+    while (true){
+      let randomQuotePromise = this.getRandomQuotePromise();
+      randomQuotePromise
+        .then(function(randomQuoteResponse){
+          if (randomQuoteResponse instanceof Error){
+            throw Error(`Programming Quotes API Request Error: ${randomQuoteResponse.message}`);
+          }
+          const isSafe = this.isContentSafe(randomQuoteResponse.quote);
+          if (isSafe){
+            return randomQuoteResponse;
+          }
+        })
+        .catch(function (error){
+          console.log(error);
+          return error;
+        });
+    }
   }
 }
