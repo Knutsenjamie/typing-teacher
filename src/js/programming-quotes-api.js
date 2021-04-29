@@ -14,7 +14,7 @@ export default class ProgrammingQuotesApi{
   }
 
   static isContentSafe(content){
-    const flaggingWords = ['sex', 'slaves', 'violence', 'bikinis', 'bitch', 'fuck', 'shit'];
+    const flaggingWords = ['sex', 'slaves', 'violence', 'bikinis', 'bitch', 'fuck', 'shit', 'private members', 'Black Plague'];
     let isSafe = true;
     flaggingWords.forEach((word) => {
       if (content.includes(word)){
