@@ -59,6 +59,7 @@ $(document).ready(function() {
 
   } else {
     gameObject = new Game();
+    gameObject.setTextArray("console.log()")
     console.log("new game: "+gameObject);
     localStorage.setItem('game', JSON.stringify(gameObject));
   }

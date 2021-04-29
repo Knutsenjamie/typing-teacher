@@ -3,7 +3,7 @@ export default class Game {
     this.numberCorrect = 0;
     this.keystrokeCounter = 0;
     this.waitingForBackspace = false;
-    this.textArray = ['d','e','f','a','u','l','t'];
+    this.textArray = [' '];
     this.gameOver = false;
     this.timeElapsed = 0;
     this.timeLastSave = 0;
