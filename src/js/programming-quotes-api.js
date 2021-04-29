@@ -12,4 +12,14 @@ export default class ProgrammingQuotesApi{
         return Error(error);
       });
   }
+
+  static isContentSafe(content){
+    const flaggingWords = ['sex', 'slaves', 'violence']
+    flaggingWords.forEach(word => {
+      if (content.includes(word)){
+        return false;
+      }
+    });
+    return true;
+  }
 }
